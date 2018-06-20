@@ -1,0 +1,156 @@
+    <!-- Navigation -->
+    <div class="row">
+      <div class="col">
+        <header>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+              <svg class="d-block" width="36" height="36" viewBox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <title>Bootstrap</title>
+                <path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"></path>
+                <path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"></path>
+              </svg>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="#" routerLink="/movie" data-toggle="tooltip" data-placement="top" title="View Movies">Movies</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="#">TV</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">  Dropdown  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarMovieGenre" data-toggle="dropdown">Top Lists by Genre</a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarMovieGenre">
+                    <a class="dropdown-item" href="#">Action</a>                    
+                    <a class="dropdown-item" href="#">Comedy</a>
+                    <a class="dropdown-item" href="#">Horror</a>
+                    <a class="dropdown-item" href="#">Romance</a>
+                  </div>
+
+                </li>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit">Search</button>
+                </form>
+              </ul>
+              
+              
+              <!-- Sign Up / Login -->
+              <ul  *ngIf="submitted" class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">User-Profile
+                       <b class="caret"></b>
+                     </a>
+                     
+                     <ul class="dropdown-menu dropdown-menu-right"  style="padding: 15px;min-width: 250px;">
+                        <!-- Modals at Bottom-->
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account Settings</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#paymentModal">Payment info</a>
+                        <a class="dropdown-item" href="#">My-Movies</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                     </ul>
+                  </li>
+              </ul>
+              <ul  *ngIf="!submitted" class="nav navbar-nav navbar-right">
+                  <!-- <li class="nav-link mr-sm-2 ">Sign-Up</li> -->
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Sign in 
+                       <b class="caret"></b>
+                     </a>
+                    <ul  class="dropdown-menu dropdown-menu-right" style="padding: 15px;min-width: 250px;">
+                      <li>
+                          <div class="row">
+                            <div class="col-md-12">
+                                <form class="form" role="form" #headerForm="ngForm" accept-charset="UTF-8"  (ngSubmit)="onSubmit()" >
+                                  
+                                <div class="form-group">
+                                      <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                      <input type="email" [(ngModel)]="formData.email" class="form-control" minlength="4" 
+                                      pattern="[^@\s]+@[^@\s]+\.[^@\s]+" name="emailAddress" placeholder="Email address" required #enterEmail="ngModel">
+                                      <!-- Hidden Validation -->
+                                      <div *ngIf="enterEmail.invalid && (enterEmail.dirty || enterEmail.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="enterEmail.errors.required">
+                                          Email is required.
+                                        </div>
+                                        <div *ngIf="enterEmail.errors.minlength">
+                                          Email must be at least 4 characters long.
+                                        </div>
+                                        <div *ngIf="enterEmail.errors.pattern">
+                                          Not a valid email.
+                                        </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                      <input type="password" class="form-control" name="enterPassword" placeholder="Password" 
+                                      required [(ngModel)]="formData.password" #enterPassword="ngModel" minlength="4" >
+                                    <!-- Hidden Validation -->
+                                    <div *ngIf="enterPassword.invalid && (enterPassword.dirty || enterPassword.touched)"
+                                      class="alert alert-danger">
+                                      <div *ngIf="enterPassword.errors.required">
+                                        Password is required.
+                                      </div>
+                                      <div *ngIf="enterPassword.errors.minlength">
+                                        Password must be at least 8 characters long.
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- <div class="checkbox">
+                                      <label>
+                                      <input type="checkbox"> Remember me
+                                      </label>
+                                  </div> -->
+
+                                  <div class="form-group">
+                                      <button type="submit" class="btn btn-success btn-block"
+                                      [disabled]="!headerForm.form.valid" >Sign in</button>
+                                  </div>
+
+                                </form>
+                            </div>
+                          </div>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                          <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                          <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+                      </li>
+                    </ul>
+                    
+                  </li>
+               </ul>
+
+            </div>
+          </nav>
+          <!-- <div>
+              <span *ngIf="!submitted">!submitted</span>
+              <span *ngIf="submitted">submitted</span>
+          </div> -->
+        </header>
+      </div>
+    </div>
