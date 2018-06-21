@@ -1,6 +1,14 @@
 
-https://alligator.io/angular/deploying-angular-app-github-pages/
 
-ng build --prod --base-href "https://akshay-sarkar.github.io/hudu-angular/hudu-angular/hudu-angular"
+ng build --prod --output-path docs --base-href /hudu-angular/
 
-ngh
+Pushish via docs folder from the repo.
+
+
+Normal Git Commands:
+1) git pull
+2) git status
+/* based on status add new generated file */
+3) git add {file-name}
+4) git commit -m "{messsage}"
+5) git push
