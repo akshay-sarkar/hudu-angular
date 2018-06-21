@@ -1,0 +1,6 @@
+
+https://alligator.io/angular/deploying-angular-app-github-pages/
+
+ng build --prod --base-href "https://akshay-sarkar.github.io/hudu-angular/hudu-angular/hudu-angular"
+
+ngh
